@@ -31,6 +31,10 @@
   pointerStylesheet.rel = 'stylesheet';
   pointerStylesheet.href = 'pointer.css?v=1';
   document.head.append(pointerStylesheet);
+  const densityStylesheet = document.createElement('link');
+  densityStylesheet.rel = 'stylesheet';
+  densityStylesheet.href = 'density.css?v=1';
+  document.head.append(densityStylesheet);
   const motionScript = document.createElement('script');
   motionScript.src = 'motion.js?v=2';
   motionScript.async = false;
