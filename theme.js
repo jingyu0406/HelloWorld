@@ -21,10 +21,36 @@
   applyTheme(saved === 'dark' || saved === 'light' ? saved : (media.matches ? 'dark' : 'light'));
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';
-  stylesheet.href = 'theme.css?v=2';
+  stylesheet.href = 'theme.css?v=3';
   document.head.append(stylesheet);
 
   document.addEventListener('DOMContentLoaded', () => {
+    const header = document.querySelector('.site-header');
+    const siteNav = header?.querySelector('nav');
+    if (header && siteNav) {
+      siteNav.id = 'site-navigation';
+      const navButton = document.createElement('button');
+      navButton.className = 'menu-toggle';
+      navButton.type = 'button';
+      navButton.setAttribute('aria-controls', siteNav.id);
+      navButton.setAttribute('aria-expanded', 'false');
+      navButton.setAttribute('aria-label', '開啟導覽選單');
+      navButton.innerHTML = '<span></span><span></span><span></span>';
+      header.insertBefore(navButton, siteNav);
+      const closeNavigation = () => {
+        document.body.classList.remove('nav-open');
+        navButton.setAttribute('aria-expanded', 'false');
+        navButton.setAttribute('aria-label', '開啟導覽選單');
+      };
+      navButton.addEventListener('click', () => {
+        const open = document.body.classList.toggle('nav-open');
+        navButton.setAttribute('aria-expanded', String(open));
+        navButton.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
+      });
+      siteNav.addEventListener('click', (event) => { if (event.target.closest('a')) closeNavigation(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && document.body.classList.contains('nav-open')) { closeNavigation(); navButton.focus(); } });
+      window.matchMedia('(min-width: 801px)').addEventListener?.('change', (event) => { if (event.matches) closeNavigation(); });
+    }
     const dropdown = document.querySelector('.nav-projects');
     if (dropdown) {
       const workLink = dropdown.querySelector('a[href="index.html"]');
