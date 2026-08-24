@@ -25,6 +25,34 @@
   document.head.append(stylesheet);
 
   document.addEventListener('DOMContentLoaded', () => {
+    const workLink = document.querySelector('.site-header nav a[href="index.html"]');
+    if (workLink) {
+      const dropdown = document.createElement('div');
+      dropdown.className = 'nav-projects';
+      workLink.parentNode.insertBefore(dropdown, workLink);
+      dropdown.append(workLink);
+      const menuButton = document.createElement('button');
+      menuButton.className = 'projects-menu-button';
+      menuButton.type = 'button';
+      menuButton.setAttribute('aria-label', '展開作品選單');
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.textContent = '⌄';
+      dropdown.append(menuButton);
+      const menu = document.createElement('div');
+      menu.className = 'projects-menu';
+      menu.innerHTML = '<p>SELECTED WORK</p><a href="idol-pact.html"><span>01</span>Idol Pact</a><a href="shooter.html"><span>02</span>2D 彈幕射擊</a><a href="vr.html"><span>03</span>竹籤不是用來烤肉的</a><a href="umbrella.html"><span>04</span>傘電</a><a href="boardgame.html"><span>05</span>林中碩鼠</a>';
+      dropdown.append(menu);
+      menuButton.addEventListener('click', () => {
+        const open = dropdown.classList.toggle('is-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', (event) => {
+        if (!dropdown.contains(event.target)) { dropdown.classList.remove('is-open'); menuButton.setAttribute('aria-expanded', 'false'); }
+      });
+      dropdown.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') { dropdown.classList.remove('is-open'); menuButton.setAttribute('aria-expanded', 'false'); workLink.focus(); }
+      });
+    }
     const button = document.createElement('button');
     button.className = 'theme-toggle';
     button.type = 'button';
