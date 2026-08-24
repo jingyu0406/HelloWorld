@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="zh-Hant"><head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+  <title>聯絡人後台 — JINGYU°</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="contact.css">
+</head><body class="admin-page">
+  <header class="site-header"><a class="brand" href="index.html">JINGYU<span>°</span></a><a class="admin-back" href="index.html">← 回到作品集</a></header>
+  <main class="admin-shell">
+    <section class="admin-login" id="login-panel"><p class="eyebrow">PRIVATE DASHBOARD</p><h1>聯絡人後台</h1><p>輸入管理員信箱，我們會寄送安全登入連結給你。</p><form id="login-form"><label for="admin-email">管理員信箱</label><div class="login-row"><input id="admin-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"><button class="button primary" type="submit">寄送登入連結</button></div><p class="form-status" id="login-status" role="status"></p></form></section>
+    <section class="admin-dashboard" id="dashboard" hidden><div class="dashboard-head"><div><p class="eyebrow">CONTACT INBOX</p><h1>聯絡訊息</h1><p id="inbox-summary">正在載入…</p></div><button class="button ghost" id="logout-button" type="button">登出</button></div><div class="inbox" id="inbox" aria-live="polite"></div></section>
+  </main><script type="module" src="admin.js"></script>
+</body></html>

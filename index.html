@@ -10,7 +10,7 @@
   <title>翁靖瑜 Weng Jing Yu — 互動設計作品集</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="contact.css">
 </head>
 <body>
   <a class="skip-link" href="#work">跳到作品</a>
@@ -45,8 +45,8 @@
 
     <section class="about" id="about"><div><p class="eyebrow">ABOUT ME</p><h2>設計與技術之間，<br>我負責把兩邊接起來。</h2></div><div class="about-copy"><p>我具備程式開發與視覺設計雙領域能力，能從專案發想、UI/UX、互動邏輯、視覺製作一路推進至部署與測試。在團隊中，我常擔任領導與協調者，把抽象設計語彙轉成可執行的技術規格。</p><div class="skill-columns"><div><h3>Design</h3><p>UI/UX · Figma · Photoshop<br>Illustrator · CSP · Live2D</p></div><div><h3>Development</h3><p>Unity · C# · C++ · OpenGL<br>HTML/CSS/JS · React Native</p></div><div><h3>Also</h3><p>JLPT N1 · Team Leadership<br>Art Direction · Teaching</p></div></div><a class="button primary" href="簡歷/翁靖瑜_統一風格履歷.pdf" target="_blank">下載完整履歷 PDF ↗</a></div></section>
 
-    <section class="contact"><p class="eyebrow">LET'S MAKE SOMETHING MEANINGFUL</p><h2>有有趣的想法嗎？<br><span>一起把它做出來。</span></h2><a class="button light" href="簡歷/翁靖瑜_統一風格履歷_可編輯.html">查看聯絡方式 →</a></section>
+    <section class="contact" id="contact"><div class="contact-heading"><p class="eyebrow">LET'S MAKE SOMETHING MEANINGFUL</p><h2>有有趣的想法嗎？<br><span>一起把它做出來。</span></h2><p>無論是合作邀請、實習機會或想聊聊作品，都歡迎留下訊息。我會盡快回覆你。</p></div><form class="contact-form" id="contact-form"><div class="form-grid"><label>你的名字<span>*</span><input name="name" type="text" autocomplete="name" maxlength="80" required placeholder="怎麼稱呼你？"></label><label>電子信箱<span>*</span><input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="name@example.com"></label><label>公司／團隊<input name="company" type="text" autocomplete="organization" maxlength="120" placeholder="選填"></label><label>聯絡主題<span>*</span><select name="subject" required><option value="">請選擇</option><option>工作或實習邀請</option><option>專案合作</option><option>作品交流</option><option>其他</option></select></label></div><label>想說的話<span>*</span><textarea name="message" minlength="10" maxlength="3000" required placeholder="簡單介紹你的想法、時程或希望合作的方式…"></textarea></label><label class="honeypot" aria-hidden="true">Website<input name="website" type="text" tabindex="-1" autocomplete="off"></label><div class="form-footer"><p>送出即表示你同意我使用這些資訊回覆本次聯絡。</p><button class="button light" type="submit">送出訊息 →</button></div><p class="form-status" id="contact-status" role="status" aria-live="polite"></p></form></section>
   </main>
   <footer><a class="brand" href="#top">JINGYU<span>°</span></a><p>Interaction design · Game development · Visual storytelling</p><a href="#top">Back to top ↑</a></footer>
-  <script src="main.js"></script>
+  <script type="module" src="main.js"></script>
 </body></html>
