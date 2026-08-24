@@ -19,6 +19,33 @@
     window.addEventListener('scroll', () => { if (!scrollQueued) { scrollQueued = true; requestAnimationFrame(updateScroll); } }, { passive: true });
     updateScroll();
 
+    if (window.matchMedia('(pointer: fine) and (min-width: 801px)').matches) {
+      const pointerGlow = document.createElement('div');
+      const cursorDot = document.createElement('div');
+      const cursorRing = document.createElement('div');
+      pointerGlow.className = 'pointer-glow'; cursorDot.className = 'cursor-dot'; cursorRing.className = 'cursor-ring';
+      document.body.append(pointerGlow, cursorRing, cursorDot);
+      let targetX = window.innerWidth / 2, targetY = window.innerHeight / 2, ringX = targetX, ringY = targetY;
+      const animatePointer = () => {
+        ringX += (targetX - ringX) * 0.16; ringY += (targetY - ringY) * 0.16;
+        cursorDot.style.transform = `translate3d(${targetX}px,${targetY}px,0)`;
+        cursorRing.style.transform = `translate3d(${ringX}px,${ringY}px,0)`;
+        pointerGlow.style.transform = `translate3d(${ringX}px,${ringY}px,0)`;
+        requestAnimationFrame(animatePointer);
+      };
+      document.addEventListener('pointermove', (event) => {
+        targetX = event.clientX; targetY = event.clientY; document.body.classList.add('pointer-active');
+        const xRatio = event.clientX / window.innerWidth - 0.5, yRatio = event.clientY / window.innerHeight - 0.5;
+        document.documentElement.style.setProperty('--hero-shift-x', `${(xRatio * 13).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-shift-y', `${(yRatio * 10).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-orb-x', `${(xRatio * -9).toFixed(2)}px`);
+        document.documentElement.style.setProperty('--hero-orb-y', `${(yRatio * -7).toFixed(2)}px`);
+      }, { passive: true });
+      document.documentElement.addEventListener('mouseleave', () => document.body.classList.remove('pointer-active'));
+      document.addEventListener('pointerover', (event) => document.body.classList.toggle('pointer-hover', Boolean(event.target.closest('a,button,input,select,textarea,.directory-card'))));
+      animatePointer();
+    }
+
     const revealTargets = document.querySelectorAll('.section-heading, .profile-heading, .profile-stats, .section-label, .capability-grid article, .experience-list article, .directory-card, .project-hero > *, .project-cover, .project-details > *, .story-block, .about > *, .contact-heading > *, .contact-form, .page-cta > *, footer > *');
     revealTargets.forEach((element, index) => {
       element.classList.add('motion-reveal');

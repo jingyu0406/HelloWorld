@@ -25,10 +25,14 @@
   document.head.append(stylesheet);
   const motionStylesheet = document.createElement('link');
   motionStylesheet.rel = 'stylesheet';
-  motionStylesheet.href = 'motion.css?v=1';
+  motionStylesheet.href = 'motion.css?v=2';
   document.head.append(motionStylesheet);
+  const pointerStylesheet = document.createElement('link');
+  pointerStylesheet.rel = 'stylesheet';
+  pointerStylesheet.href = 'pointer.css?v=1';
+  document.head.append(pointerStylesheet);
   const motionScript = document.createElement('script');
-  motionScript.src = 'motion.js?v=1';
+  motionScript.src = 'motion.js?v=2';
   motionScript.async = false;
   document.head.append(motionScript);
 
