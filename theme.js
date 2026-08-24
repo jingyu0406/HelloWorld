@@ -23,6 +23,14 @@
   stylesheet.rel = 'stylesheet';
   stylesheet.href = 'theme.css?v=3';
   document.head.append(stylesheet);
+  const motionStylesheet = document.createElement('link');
+  motionStylesheet.rel = 'stylesheet';
+  motionStylesheet.href = 'motion.css?v=1';
+  document.head.append(motionStylesheet);
+  const motionScript = document.createElement('script');
+  motionScript.src = 'motion.js?v=1';
+  motionScript.async = false;
+  document.head.append(motionScript);
 
   document.addEventListener('DOMContentLoaded', () => {
     const header = document.querySelector('.site-header');
